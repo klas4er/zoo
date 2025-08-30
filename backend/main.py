@@ -14,7 +14,7 @@ app.add_middleware(
 )
 
 # Include routers
-from routers import router
+from .routers import router
 app.include_router(router)
 
 # Health check endpoint
