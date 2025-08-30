@@ -1,0 +1,62 @@
+## MVP Development Tasks
+
+### Initial Setup
+- [x] Create project directory structure
+- [x] Set up backend with FastAPI
+- [x] Implement database models and migrations
+- [x] Set up frontend with React + TypeScript + Vite
+
+### Core Engine Implementation
+- [x] Implement Vosk streaming ASR
+- [x] Implement Whisper batch ASR (tiny/base models)
+- [x] Implement NER with Natasha and spaCy
+- [x] Add regex parsing for dates, temperatures, weights
+- [x] Implement data normalization and entity merging
+
+### API Implementation
+- [x] Create audio processing endpoint
+- [x] Create transcriptions listing endpoint
+- [x] Create single transcriptions endpoint
+- [x] Create entity configuration endpoint
+- [x] Create animal observation log endpoint
+- [x] Create daily reports endpoint
+- [x] Create health check endpoint
+- [x] Create metrics endpoint
+- [ ] Implement WebSocket streaming endpoint
+
+### Performance Optimization
+- [x] Implement model preloading
+- [x] Add CPU optimization settings
+- [ ] Implement VAD for silence detection
+- [ ] Add chunking for Whisper processing
+- [ ] Add caching for repeated segments
+
+### Security Implementation
+- [ ] Add JWT authentication
+- [ ] Implement role-based access control
+- [ ] Add file size and MIME type validation
+- [ ] Configure CORS policy
+
+### Testing
+- [ ] Add unit tests for NER and normalization
+- [ ] Add integration tests for WAV processing
+- [ ] Implement WER evaluation script
+- [ ] Add entity extraction evaluation
+
+### Documentation
+- [x] Create README with setup and usage instructions
+- [ ] Create DEPLOY.md with Docker deployment guide
+- [ ] Create API.md with OpenAPI specification
+- [ ] Create ENTITIES.md with entity rules and examples
+
+### Containerization
+- [x] Create Dockerfiles for all services
+- [x] Create docker-compose.yml
+- [ ] Add environment file templates
+- [ ] Implement seed script for initial data
+
+### Finalization
+- [ ] Verify all endpoints work correctly
+- [ ] Test both batch and streaming modes
+- [ ] Validate performance metrics (WER < 20%, processing time < 90s)
+- [ ] Package complete solution for delivery

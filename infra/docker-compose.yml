@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: zookeeper_ai
+      POSTGRES_USER: zoo_user
+      POSTGRES_PASSWORD: zoo_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://zoo_user:zoo_pass@db:5432/zookeeper_ai
+      - REDIS_URL=redis://redis:6379/0
+
+  worker:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.worker
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://zoo_user:zoo_pass@db:5432/zookeeper_ai
+      - REDIS_URL=redis://redis:6379/0
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - api
+
+volumes:
+  postgres_data:

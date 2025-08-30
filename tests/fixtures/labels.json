@@ -1,0 +1,23 @@
+{
+  "audio_samples": [
+    {
+      "file": "sample1.wav",
+      "reference_text": "Самка жирафа Жужа ела 700 грамм люцерны, температура 37.8, спокойное поведение",
+      "entities": {
+        "animal": {"species": "жираф", "name": "Жужа"},
+        "feeding": {"food": "люцерна", "amount_g": 700},
+        "vitals": {"temperature_c": 37.8},
+        "behavior": {"type": "спокойное"}
+      }
+    },
+    {
+      "file": "sample2.wav",
+      "reference_text": "Медведь Sonya весит 850 кг и показывает игривое поведение",
+      "entities": {
+        "animal": {"species": "медведь", "name": "Sonya"},
+        "vitals": {"weight_kg": 850},
+        "behavior": {"type": "игривое"}
+      }
+    }
+  ]
+}
